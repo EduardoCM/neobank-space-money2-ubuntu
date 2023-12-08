@@ -15,9 +15,11 @@ public class OrderResponse extends PanacheEntityBase {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer id;
-	
-    public float precioBruto;
+
+	public float precioBruto;
+
 	public float iva;
+
 	public float precioNeto;
 
 }
