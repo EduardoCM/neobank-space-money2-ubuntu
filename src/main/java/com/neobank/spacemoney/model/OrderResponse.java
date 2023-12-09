@@ -21,5 +21,7 @@ public class OrderResponse extends PanacheEntityBase {
 	public float iva;
 
 	public float precioNeto;
+	
+	public String planeta;
 
 }

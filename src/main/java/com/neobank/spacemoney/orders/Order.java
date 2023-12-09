@@ -1,9 +1,11 @@
 package com.neobank.spacemoney.orders;
 
 import com.neobank.spacemoney.model.OrderResponse;
+import com.neobank.spacemoney.model.Planeta;
 
 public abstract class Order {
 
+	protected Planeta planeta;
     protected float precioBruto;
     protected float iva;
     protected float precioNeto;
@@ -25,6 +27,7 @@ public abstract class Order {
 		response.precioBruto = this.precioBruto;
 		response.iva = this.iva;
 		response.precioNeto = this.precioNeto;
+		response.planeta = this.planeta.toString();
 		return response;
 	}
 
