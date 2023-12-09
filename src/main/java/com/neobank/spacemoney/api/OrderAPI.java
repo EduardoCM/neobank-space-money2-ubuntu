@@ -60,6 +60,7 @@ public class OrderAPI {
 		}
 		
 		
+		log.info("Guardando información");
 		OrderResponse response = newOrder.getResponse();
 		response.persist();
 		
