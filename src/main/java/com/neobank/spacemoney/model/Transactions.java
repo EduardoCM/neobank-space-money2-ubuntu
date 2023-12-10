@@ -1,6 +1,8 @@
 package com.neobank.spacemoney.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,17 +11,17 @@ import javax.persistence.Table;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-@Table(name = "Users")
-public class User extends PanacheEntityBase {
+@Table(name = "Transactions")
+public class Transactions extends PanacheEntityBase {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer id;
 
-	public String name;
+	public String numberAccount;
 
-	public int age;
+	@Enumerated(EnumType.STRING)
+	public Operation operation;
 
-	public String email;
-
+	public String amount;
 }
