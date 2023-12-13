@@ -1,7 +1,5 @@
 package com.neobank.spacemoney.api;
 
-import java.time.LocalDateTime;
-
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.POST;
@@ -12,13 +10,12 @@ import javax.ws.rs.core.Response.Status;
 import org.jboss.logging.Logger;
 
 import com.neobank.spacemoney.model.Account;
-import com.neobank.spacemoney.model.Client;
 import com.neobank.spacemoney.model.Transactions;
 import com.neobank.spacemoney.model.User;
-import com.neobank.spacemoney.service.AccountService;
-import com.neobank.spacemoney.service.TransactionService;
-import com.neobank.spacemoney.service.UserService;
-import com.neobank.spacemoney.service.impl.UserServiceImpl;
+import com.neobank.spacemoney.service.PersistService;
+import com.neobank.spacemoney.service.impl.AccountServiceImpl;
+import com.neobank.spacemoney.service.impl.TransactionServiceImpl;
+import com.neobank.spacemoney.service.impl.UserService2Impl;
 
 @Path("/api/user")
 @Transactional
@@ -27,16 +24,18 @@ public class UserAPI {
 	@Inject
 	private Logger log;
 
-	private UserService userService = new UserServiceImpl();
-	
-	private AccountService accountService = new UserServiceImpl();
-	
-	private TransactionService transactionService = new UserServiceImpl();
+	private PersistService<User> userService = new UserService2Impl();
+
+	private PersistService<Account> accountService = new AccountServiceImpl();
+
+	private PersistService<Transactions> transactionService = new TransactionServiceImpl();
 
 	@POST
 	public Response createUser(User user) {
 
-		userService.createUser(user);
+		log.info("Programacion generica: " + user);
+
+		userService.create(user);
 
 		return Response.status(Status.CREATED).build();
 	}
@@ -44,21 +43,23 @@ public class UserAPI {
 	@POST
 	@Path("/account")
 	public Response createAccount(Account account) {
-		
-		accountService.createAccount(account);
-		
+
+		log.info("Programacion generica: " + account);
+
+		accountService.create(account);
+
 		return Response.status(Status.CREATED).build();
 	}
-	
+
 	@POST
 	@Path("/transaction")
 	public Response createTransaction(Transactions transaction) {
-		
-		transactionService.createTransactions(transaction);
-		
+
+		log.info("Programacion generica: " + transaction);
+
+		transactionService.create(transaction);
+
 		return Response.status(Status.CREATED).build();
 	}
-	
-	
 
 }
