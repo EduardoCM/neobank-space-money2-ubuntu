@@ -5,31 +5,38 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-
 @Entity
-@Table(name = "Accounts")
-public class Account extends PanacheEntityBase {
+@Table(name = "Direcciones")
+public class Direccion {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer id;
+
+	public String planeta;
+
+	public String pais;
+
+	public String estado;
+
+	public String municipio;
 	
-	public String number;
+	public String localidad;
+
+	public String codigoPostal;
 	
-	public Double balance;
+	public String calle;
+
+	public String numero;
+
 	
-	public Integer userId;
-	
-	@Override
-	public String toString() {
-		return "Account [number=" + number + ", balance=" + balance + "]";
-	}
-	
-	
+	/*
+	@OneToOne
+	@JoinColumn(name = "user_direccion", nullable = false)
+	public User user;
+	*/
 
 }

@@ -12,18 +12,17 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
 @Table(name = "Transactions")
-public class Transactions extends PanacheEntityBase  {
+public class Transactions extends PanacheEntityBase {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer id;
-	
-	public String numberAccount;
-	
+
+	public Integer accountId;
+
 	@Enumerated(EnumType.STRING)
 	public Operation operation;
-	
+
 	public Double amount;
-	
-	
+
 }

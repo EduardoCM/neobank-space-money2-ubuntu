@@ -10,4 +10,9 @@ public class AccountServiceImpl implements PersistService<Account> {
 		a.persist();
 	}
 
+	@Override
+	public Account findById(Integer id) {
+		return Account.findById(id);
+	}
+
 }

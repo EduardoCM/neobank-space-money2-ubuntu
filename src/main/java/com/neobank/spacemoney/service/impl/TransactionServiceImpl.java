@@ -10,4 +10,10 @@ public class TransactionServiceImpl implements PersistService<Transactions> {
 		c.persist();
 	}
 
+	@Override
+	public Transactions findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

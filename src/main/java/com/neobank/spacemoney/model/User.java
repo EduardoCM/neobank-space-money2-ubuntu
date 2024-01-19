@@ -1,9 +1,13 @@
 package com.neobank.spacemoney.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
@@ -21,5 +25,10 @@ public class User extends PanacheEntityBase {
 	public int age;
 	
 	public String email;
+	
+	@OneToOne
+	@MapsId
+	@JoinColumn(name = "id")
+	public Direccion direccion;
 
 }
